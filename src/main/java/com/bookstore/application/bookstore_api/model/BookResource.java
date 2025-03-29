@@ -1,6 +1,6 @@
 package com.bookstore.application.bookstore_api.model;
 
-public class bookVendor {
+public class BookResource {
 
     private String id;
     private String title;
@@ -10,10 +10,10 @@ public class bookVendor {
     private double price;
     private int stockQuantity;
 
-    public bookVendor() {
+    public BookResource() {
     }
 
-    public bookVendor(String id, String title, String authorId, String isbn, int publicationYear, double price, int stockQuantity) {
+    public BookResource(String id, String title, String authorId, String isbn, int publicationYear, double price, int stockQuantity) {
         this.id = id;
         this.title = title;
         this.authorId = authorId;
