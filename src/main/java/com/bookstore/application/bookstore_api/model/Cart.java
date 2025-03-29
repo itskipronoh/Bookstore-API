@@ -11,6 +11,8 @@ public class Cart {
         this.items = new ArrayList<>();
     }
 
+
+
     public Cart(String customerId) {
         this.customerId = customerId;
         this.items = new ArrayList<>();
@@ -51,5 +53,9 @@ public class Cart {
                 break;
             }
         }
+    }
+
+    public boolean hasItem(String bookId) {
+        return false;
     }
 }
