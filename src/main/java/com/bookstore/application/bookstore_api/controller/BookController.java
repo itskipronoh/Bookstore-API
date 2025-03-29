@@ -1,6 +1,6 @@
 package com.bookstore.application.bookstore_api.controller;
 
-import com.bookstore.application.bookstore_api.model.BookResource;
+import com.bookstore.application.bookstore_api.model.Book;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -8,26 +8,26 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/books") // Base URL for all book endpoints
-public class bookApiService {
+public class BookController {
 
-    private final List<BookResource> books = new ArrayList<>(); // Store books in memory
+    private final List<Book> books = new ArrayList<>(); // Store books in memory
 
     // POST: Create a new book
     @PostMapping
-    public String createBook(@RequestBody BookResource book) {
+    public String createBook(@RequestBody Book book) {
         books.add(book);
         return "Book created successfully with ID: " + book.getId();
     }
 
     // GET: Retrieve all books
     @GetMapping
-    public List<BookResource> getAllBooks() {
+    public List<Book> getAllBooks() {
         return books;
     }
 
     // GET: Retrieve a book by ID
     @GetMapping("/{id}")
-    public BookResource getBookById(@PathVariable String id) {
+    public Book getBookById(@PathVariable String id) {
         return books.stream()
                 .filter(book -> book.getId().equals(id))
                 .findFirst()
@@ -36,8 +36,8 @@ public class bookApiService {
 
     // PUT: Update a book by ID
     @PutMapping("/{id}")
-    public String updateBook(@PathVariable String id, @RequestBody BookResource updatedBook) {
-        for (BookResource book : books) {
+    public String updateBook(@PathVariable String id, @RequestBody Book updatedBook) {
+        for (Book book : books) {
             if (book.getId().equals(id)) {
                 book.setTitle(updatedBook.getTitle());
                 book.setAuthorId(updatedBook.getAuthorId());

@@ -1,7 +1,7 @@
 package com.bookstore.application.bookstore_api.controller;
 
 import com.bookstore.application.bookstore_api.model.Author;
-import com.bookstore.application.bookstore_api.model.BookResource;
+import com.bookstore.application.bookstore_api.model.Book;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.List;
 public class AuthorController {
 
     private final List<Author> authors = new ArrayList<>();
-    private final List<BookResource> books = new ArrayList<>(); // This should be fetched from the book service
+    private final List<Book> books = new ArrayList<>(); // This should be fetched from the book service
 
     // 1. POST /authors - Create a new author
     @PostMapping
@@ -57,9 +57,9 @@ public class AuthorController {
 
     // 6. GET /authors/{id}/books - Retrieve books written by the author
     @GetMapping("/{id}/books")
-    public List<BookResource> getBooksByAuthor(@PathVariable String id) {
-        List<BookResource> authorBooks = new ArrayList<>();
-        for (BookResource book : books) {
+    public List<Book> getBooksByAuthor(@PathVariable String id) {
+        List<Book> authorBooks = new ArrayList<>();
+        for (Book book : books) {
             if (book.getAuthorId().equals(id)) {
                 authorBooks.add(book);
             }
