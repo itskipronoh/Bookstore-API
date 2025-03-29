@@ -42,4 +42,7 @@ public class Order {
     public String getStatus() {
         return status;
     }
+
+    public void setCustomerId(String customerId) {
+    }
 }
